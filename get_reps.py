@@ -41,7 +41,8 @@ def fetch_all_members(congress):
 
     url = base_url
     while url:
-        resp = requests.get(url, params=params if url == base_url else None, timeout=30)
+        request_params = params if url == base_url else {"api_key": API_KEY}
+        resp = requests.get(url, params=request_params, timeout=30)
         resp.raise_for_status()
         data = resp.json()
 
