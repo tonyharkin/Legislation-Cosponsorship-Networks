@@ -3,7 +3,7 @@ import requests
 
 API_KEY = "F8GstZbcQIB090NSZ38eEEmsNvaMZtJXuMSXALIX"  # set this in your shell
 CONGRESS = 117  # change this to any Congress number you want
-CHAMBER = "senate"  # "senate" or "house"
+CHAMBER = "house"  # "senate" or "house"
 
 
 def chamber_api_value(chamber):
@@ -96,10 +96,11 @@ def main():
     )
 
     for m in sorted_members:
+        bioguide = m.get("bioguideId", "Unknown")
         name = m.get("name", "Unknown")
         state = m.get("state", "Unknown")
         party = m.get("partyName", m.get("party", "Unknown"))
-        print(f"{name} | {state} | {party}")
+        print(f"{bioguide} | {name} | {state} | {party}")
 
 
 if __name__ == "__main__":
